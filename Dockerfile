@@ -15,5 +15,5 @@ RUN apt-get update -qq \
   && DEBIAN_FRONTEND=noninteractive apt-get -y install tree \
   && rm -rf /var/lib/apt/lists/*
 
-# yyyy-MM-dd_v
-ENV UBUNTU_BASE_REV 2016-09-21_v1
+# Version name
+ENV UBUNTU_BASE_REV 1.0.0
