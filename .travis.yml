@@ -1,0 +1,17 @@
+sudo: required
+language: generic
+services:
+  - docker
+
+script:
+  - docker build -t vielasis/ubuntu-base
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_UN" -p="$DOCKER_PW";
+    if [ -n "$TRAVIS_TAG" ]; then
+    docker push vielasis/ubuntu-base:"$TRAVIS_TAG"
+    else
+    docker push vielasis/ubuntu-base
+    fi
+    fi
